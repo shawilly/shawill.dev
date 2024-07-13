@@ -1,5 +1,5 @@
 {
-  "name": "shawilly.dev",
+  "name": "chantalwilliams",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -15,16 +15,20 @@
     "start": "next start"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "@prisma/client": "^5.14.0",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tanstack/react-query": "^5.39.0",
     "@trpc/client": "next",
     "@trpc/react-query": "next",
     "@trpc/server": "next",
+    "framer-motion": "^11.3.2",
     "geist": "^1.3.0",
     "next": "^14.2.1",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
+    "react-icons": "^5.2.1",
+    "react-type-animation": "^3.2.0",
     "server-only": "^0.0.1",
     "superjson": "^2.2.1",
     "zod": "^3.23.3"
