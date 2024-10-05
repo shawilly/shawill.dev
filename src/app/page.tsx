@@ -1,6 +1,6 @@
+import CodeBlock from "@/components/code-block";
 import localFont from "next/font/local";
 import Image from "next/image";
-import CodeBlock from "./components/code-block";
 
 const picnic = localFont({ src: "./fonts/PicNic-Regular.woff2" });
 
