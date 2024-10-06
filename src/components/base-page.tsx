@@ -3,6 +3,7 @@ import { Sidebar } from "@/components/sidebar";
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { cn } from "@/lib/utils";
 import { useStore } from "zustand";
+import { Footer } from "./footer";
 
 export function BasePage({ children }: { children: React.ReactNode }) {
   const sidebar = useStore(useSidebarToggle, (state) => state);
@@ -19,6 +20,7 @@ export function BasePage({ children }: { children: React.ReactNode }) {
         )}
       >
         {children}
+        <Footer />
       </main>
     </div>
   );

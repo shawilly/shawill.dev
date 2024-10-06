@@ -1,12 +1,15 @@
+import { Skull } from "lucide-react";
 import Link from "next/link";
-import { PanelsTopLeft } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { useStore } from "@/hooks/use-store";
-import { Button } from "@/components/ui/button";
 import { Menu } from "@/components/menu";
-import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { SidebarToggle } from "@/components/sidebar-toggle";
+import { Button } from "@/components/ui/button";
+import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
+import { useStore } from "@/hooks/use-store";
+import { cn } from "@/lib/utils";
+import localFont from "next/font/local";
+
+const picnic = localFont({ src: "../fonts/PicNic-Regular.woff2" });
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);
@@ -30,17 +33,18 @@ export function Sidebar() {
           variant="link"
           asChild
         >
-          <Link href="/dashboard" className="flex items-center gap-2">
-            <PanelsTopLeft className="w-6 h-6 mr-1" />
+          <Link href="/" className="flex items-center gap-2">
+            <Skull className="w-6 h-6 mr-1" />
             <h1
               className={cn(
                 "font-bold text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300",
                 sidebar?.isOpen === false ?
                   "-translate-x-96 opacity-0 hidden"
                 : "translate-x-0 opacity-100",
+                picnic.className,
               )}
             >
-              Brand
+              shawilly
             </h1>
           </Link>
         </Button>

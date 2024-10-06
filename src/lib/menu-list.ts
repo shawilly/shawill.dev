@@ -1,93 +1,99 @@
 import {
-  Tag,
-  Users,
-  Settings,
   Bookmark,
-  SquarePen,
-  LayoutGrid,
+  BriefcaseBusiness,
+  Contact,
+  DownloadCloud,
+  FolderGit,
+  Link,
   LucideIcon,
+  MessageCircle,
+  Settings,
+  SquarePen,
+  Tag,
+  University,
+  Users,
 } from "lucide-react";
 
-type Submenu = {
+interface Submenu {
   href: string;
   label: string;
   active?: boolean;
-};
+}
 
-type Menu = {
+interface Menu {
   href: string;
   label: string;
   active: boolean;
   icon: LucideIcon;
   submenus?: Submenu[];
-};
+}
 
-type Group = {
+interface Group {
   groupLabel: string;
   menus: Menu[];
-};
+}
 
 export function getMenuList(pathname: string): Group[] {
   return [
     {
-      groupLabel: "",
-      menus: [
-        {
-          href: "/dashboard",
-          label: "Dashboard",
-          active: pathname.includes("/dashboard"),
-          icon: LayoutGrid,
-          submenus: [],
-        },
-      ],
-    },
-    {
-      groupLabel: "Contents",
+      groupLabel: "Experience",
       menus: [
         {
           href: "",
-          label: "Posts",
-          active: pathname.includes("/posts"),
-          icon: SquarePen,
+          label: "Projects",
+          active: pathname.includes("/projects"),
+          icon: FolderGit,
           submenus: [
             {
-              href: "/posts",
-              label: "All Posts",
+              href: "/ponokai",
+              label: "Ponokai",
             },
             {
-              href: "/posts/new",
-              label: "New Post",
+              href: "/chantoola",
+              label: "Chantoola",
             },
           ],
         },
         {
-          href: "/categories",
-          label: "Categories",
-          active: pathname.includes("/categories"),
-          icon: Bookmark,
+          href: "/work-experience",
+          label: "Work",
+          active: pathname.includes("/work-experience"),
+          icon: BriefcaseBusiness,
         },
         {
-          href: "/tags",
-          label: "Tags",
-          active: pathname.includes("/tags"),
-          icon: Tag,
+          href: "/Education",
+          label: "Education",
+          active: pathname.includes("/education"),
+          icon: University,
         },
       ],
     },
     {
-      groupLabel: "Settings",
+      groupLabel: "Work with me",
       menus: [
         {
-          href: "/users",
-          label: "Users",
-          active: pathname.includes("/users"),
-          icon: Users,
+          href: "/contact",
+          label: "Contact",
+          active: pathname.includes("/contact"),
+          icon: MessageCircle,
         },
         {
-          href: "/account",
-          label: "Account",
-          active: pathname.includes("/account"),
-          icon: Settings,
+          href: "/social",
+          label: "Socials",
+          active: pathname.includes("/social"),
+          icon: Link,
+        },
+      ],
+    },
+    {
+      groupLabel: "",
+      menus: [
+        {
+          href: "https://docs.google.com/document/d/1XebXiapH1V6ZWhDmdIXZVVqzKLLwhEVR/export?format=pdf",
+          label: "Download resume",
+          active: false,
+          icon: DownloadCloud,
+          submenus: [],
         },
       ],
     },
