@@ -1,21 +1,36 @@
-import { createHighlighter } from "shiki";
-import fs from "fs";
+"use client";
+import { getCodeBlockHtml } from "@/lib/get-code-block-html";
+import { Loader } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
-export default async function CodeBlock() {
-  const myTheme = JSON.parse(
-    fs.readFileSync("./src/app/lib/ponokai.json", "utf8"),
+export function CodeBlock(): JSX.Element {
+  const { theme } = useTheme();
+
+  const [codeBlockHtml, setCodeBlockHtml] = useState<string>();
+
+  useEffect(() => {
+    const setCodeBlockTheme = async (): Promise<void> => {
+      const { darkCodeBlockHtml, lightCodeBlockHtml } =
+        await getCodeBlockHtml();
+
+      setCodeBlockHtml(
+        theme === "dark" ? darkCodeBlockHtml : lightCodeBlockHtml,
+      );
+    };
+
+    setCodeBlockTheme();
+  }, [theme]);
+
+  if (!codeBlockHtml) {
+    return <Loader />;
+  }
+
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: codeBlockHtml,
+      }}
+    />
   );
-  const code = fs.readFileSync("./src/app/lib/about-code-block.ts", "utf8");
-
-  const highlighter = await createHighlighter({
-    themes: [myTheme],
-    langs: ["typescript"],
-  });
-
-  const html = highlighter.codeToHtml(code, {
-    lang: "typescript",
-    theme: "ponokai",
-  });
-
-  return <div dangerouslySetInnerHTML={{ __html: html }}></div>;
 }
