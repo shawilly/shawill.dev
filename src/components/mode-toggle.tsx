@@ -10,7 +10,7 @@ import {
   TooltipProvider,
 } from "@/components/ui/tooltip";
 
-export function ModeToggle() {
+export function DarkModeToggle(): JSX.Element {
   const { setTheme, theme } = useTheme();
 
   return (

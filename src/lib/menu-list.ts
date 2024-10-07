@@ -1,37 +1,12 @@
+import type { Group } from "@/types";
 import {
-  Bookmark,
   BriefcaseBusiness,
-  Contact,
   DownloadCloud,
   FolderGit,
   Link,
-  LucideIcon,
   MessageCircle,
-  Settings,
-  SquarePen,
-  Tag,
   University,
-  Users,
 } from "lucide-react";
-
-interface Submenu {
-  href: string;
-  label: string;
-  active?: boolean;
-}
-
-interface Menu {
-  href: string;
-  label: string;
-  active: boolean;
-  icon: LucideIcon;
-  submenus?: Submenu[];
-}
-
-interface Group {
-  groupLabel: string;
-  menus: Menu[];
-}
 
 export function getMenuList(pathname: string): Group[] {
   return [
@@ -45,8 +20,9 @@ export function getMenuList(pathname: string): Group[] {
           icon: FolderGit,
           submenus: [
             {
-              href: "/ponokai",
+              href: "https://ponokai.vercel.app",
               label: "Ponokai",
+              target: "_blank",
             },
             {
               href: "/chantoola",

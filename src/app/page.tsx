@@ -1,6 +1,6 @@
 import { BasePage } from "@/components/base-page";
 import { CodeBlock } from "@/components/code-block";
-import { ModeToggle } from "@/components/mode-toggle";
+import { DarkModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
@@ -13,7 +13,7 @@ export default async function Home(): Promise<JSX.Element> {
       <h1 className={cn(picnic.className, "antialiased font-bold text-5xl")}>
         shawilly
       </h1>
-      <ModeToggle />
+      <DarkModeToggle />
 
       <div className="bg-[#eff1f5] dark:bg-[#0a0a0a] p-9 rounded-lg">
         <CodeBlock />

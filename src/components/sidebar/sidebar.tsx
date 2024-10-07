@@ -1,15 +1,15 @@
 import { Skull } from "lucide-react";
 import Link from "next/link";
 
-import { Menu } from "@/components/menu";
-import { SidebarToggle } from "@/components/sidebar-toggle";
+import { Menu } from "@/components/sidebar/menu/menu";
+import { SidebarToggle } from "@/components/sidebar/sidebar-toggle";
 import { Button } from "@/components/ui/button";
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { useStore } from "@/hooks/use-store";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 
-const picnic = localFont({ src: "../fonts/PicNic-Regular.woff2" });
+const picnic = localFont({ src: "../../fonts/PicNic-Regular.woff2" });
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);

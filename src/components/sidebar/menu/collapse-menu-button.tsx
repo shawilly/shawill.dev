@@ -27,19 +27,14 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { usePathname } from "next/navigation";
-
-type Submenu = {
-  href: string;
-  label: string;
-  active?: boolean;
-};
+import type { Submenu } from "@/types";
 
 interface CollapseMenuButtonProps {
   icon: LucideIcon;
   label: string;
   active: boolean;
   submenus: Submenu[];
-  isOpen: boolean | undefined;
+  isOpen?: boolean;
 }
 
 export function CollapseMenuButton({
@@ -54,6 +49,94 @@ export function CollapseMenuButton({
     submenu.active == undefined ? submenu.href === pathname : submenu.active,
   );
   const [isCollapsed, setIsCollapsed] = useState<boolean>(isSubmenuActive);
+
+  const mapOpenSubmenuItem = (
+    { href, label: openLabel, active: openActive, target: openTarget }: Submenu,
+    index: number,
+  ): JSX.Element => {
+    return (
+      <Button
+        key={index}
+        variant={
+          (openActive === undefined && pathname === href) || openActive ?
+            "secondary"
+          : "ghost"
+        }
+        className="w-full justify-start h-10 mb-1"
+        asChild
+      >
+        {openTarget === "_blank" ?
+          <a href={href} target={openTarget} rel="noopener noreferrer">
+            <span className="mr-4 ml-2">
+              <Dot size={18} />
+            </span>
+            <p
+              className={cn(
+                "max-w-[170px] truncate",
+                isOpen ?
+                  "translate-x-0 opacity-100"
+                : "-translate-x-96 opacity-0",
+              )}
+            >
+              {openLabel}
+            </p>
+          </a>
+        : <Link href={href}>
+            <span className="mr-4 ml-2">
+              <Dot size={18} />
+            </span>
+            <p
+              className={cn(
+                "max-w-[170px] truncate",
+                isOpen ?
+                  "translate-x-0 opacity-100"
+                : "-translate-x-96 opacity-0",
+              )}
+            >
+              {openLabel}
+            </p>
+          </Link>
+        }
+      </Button>
+    );
+  };
+
+  const mapClosedSubmenuItem = (
+    {
+      href,
+      label: closedLabel,
+      active: closedActive,
+      target: closedTarget,
+    }: Submenu,
+    index: number,
+  ): JSX.Element => (
+    <DropdownMenuItem key={index} asChild>
+      {closedTarget === "_blank" ?
+        <a
+          className={`cursor-pointer ${
+            ((closedActive === undefined && pathname === href) ||
+              closedActive) &&
+            "bg-secondary"
+          }`}
+          href={href}
+          target={closedTarget}
+          rel="noopener noreferrer"
+        >
+          <p className="max-w-[180px] truncate">{closedLabel}</p>
+        </a>
+      : <Link
+          className={`cursor-pointer ${
+            ((closedActive === undefined && pathname === href) ||
+              closedActive) &&
+            "bg-secondary"
+          }`}
+          href={href}
+        >
+          <p className="max-w-[180px] truncate">{closedLabel}</p>
+        </Link>
+      }
+    </DropdownMenuItem>
+  );
 
   return isOpen ?
       <Collapsible
@@ -102,34 +185,7 @@ export function CollapseMenuButton({
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-          {submenus.map(({ href, label, active }, index) => (
-            <Button
-              key={index}
-              variant={
-                (active === undefined && pathname === href) || active ?
-                  "secondary"
-                : "ghost"
-              }
-              className="w-full justify-start h-10 mb-1"
-              asChild
-            >
-              <Link href={href}>
-                <span className="mr-4 ml-2">
-                  <Dot size={18} />
-                </span>
-                <p
-                  className={cn(
-                    "max-w-[170px] truncate",
-                    isOpen ?
-                      "translate-x-0 opacity-100"
-                    : "-translate-x-96 opacity-0",
-                  )}
-                >
-                  {label}
-                </p>
-              </Link>
-            </Button>
-          ))}
+          {submenus.map(mapOpenSubmenuItem)}
         </CollapsibleContent>
       </Collapsible>
     : <DropdownMenu>
@@ -169,19 +225,7 @@ export function CollapseMenuButton({
             {label}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          {submenus.map(({ href, label, active }, index) => (
-            <DropdownMenuItem key={index} asChild>
-              <Link
-                className={`cursor-pointer ${
-                  ((active === undefined && pathname === href) || active) &&
-                  "bg-secondary"
-                }`}
-                href={href}
-              >
-                <p className="max-w-[180px] truncate">{label}</p>
-              </Link>
-            </DropdownMenuItem>
-          ))}
+          {submenus.map(mapClosedSubmenuItem)}
           <DropdownMenuArrow className="fill-border" />
         </DropdownMenuContent>
       </DropdownMenu>;
