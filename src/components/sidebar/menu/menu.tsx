@@ -1,8 +1,5 @@
 "use client";
 
-import { Ellipsis } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { CollapseMenuButton } from "@/components/sidebar/menu/collapse-menu-button";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -15,7 +12,9 @@ import {
 import { getMenuList } from "@/lib/menu-list";
 import { cn } from "@/lib/utils";
 import type { Group, Menu } from "@/types";
-import { DarkModeToggle } from "@/components/mode-toggle";
+import { Ellipsis } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface MenuProps {
   isOpen?: boolean;

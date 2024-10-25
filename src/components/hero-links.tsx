@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function HeroLinks(): JSX.Element {
   return (
-    <div className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+    <div className="row-start-3 flex gap-6 flex-wrap items-center justify-start">
       <Link
         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
         href="https://github.com/shawilly"
@@ -29,8 +29,9 @@ export function HeroLinks(): JSX.Element {
           aria-hidden
           src="https://ponokai.vercel.app/_next/static/media/ponokai-logo-with-icon.d3929159.svg"
           alt="Window icon"
-          width={90}
-          height={90}
+          className="bg-ponokai-background p-4 rounded-lg dark:bg-transparent "
+          width={120}
+          height={120}
         />
         →
       </Link>

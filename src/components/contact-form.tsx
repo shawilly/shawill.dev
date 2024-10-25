@@ -115,7 +115,7 @@ export function ContactForm(): JSX.Element {
           )}
         />
 
-        <Button type="submit" disabled={loading}>
+        <Button className="w-full" type="submit" disabled={loading}>
           {loading ? "Sending..." : "Send"}
         </Button>
       </form>

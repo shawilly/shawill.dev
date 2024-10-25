@@ -7,7 +7,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+} from "@/components/ui/tooltip";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { ToastContainer } from "react-toastify";
@@ -25,12 +25,12 @@ export function BasePage({ children }: { children: React.ReactNode }) {
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <Sidebar />
       <ToastContainer />
-      <div className="fixed top-12 right-12">
+      <div className="absolute top-4 right-4 lg:max-h-[6rem] lg:flex-1 lg:justify-end lg:items-center">
         <TooltipProvider disableHoverableContent>
           <Tooltip delayDuration={100}>
             <TooltipTrigger asChild>
               <Button
-                className="rounded-full w-8 h-8 bg-background mr-2"
+                className="rounded-full w-8 h-8 bg-background mr-2 shadow-inner shadow-slate-500 dark:hover:shadow-ponokai-text hover:shadow-ponokai-background"
                 variant="outline"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
