@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export function Footer(): JSX.Element {
+export function HeroLinks(): JSX.Element {
   return (
     <div className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-      <a
+      <Link
         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
         href="https://github.com/shawilly"
         target="_blank"
@@ -17,8 +18,8 @@ export function Footer(): JSX.Element {
           height={36}
         />
         Github
-      </a>
-      <a
+      </Link>
+      <Link
         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
         href="https://ponokai.vercel.app"
         target="_blank"
@@ -32,8 +33,8 @@ export function Footer(): JSX.Element {
           height={90}
         />
         →
-      </a>
-      <a
+      </Link>
+      <Link
         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
         href="https://www.linkedin.com/in/shanebarrywilliams/"
         target="_blank"
@@ -47,7 +48,7 @@ export function Footer(): JSX.Element {
           height={60}
         />
         →
-      </a>
+      </Link>
     </div>
   );
 }

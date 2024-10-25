@@ -1,0 +1,135 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { sendEmail } from "@/lib/send-email";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { z } from "zod";
+
+export const contactFormSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Invalid email address.",
+  }),
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters.",
+  }),
+});
+
+export function ContactForm(): JSX.Element {
+  const [loading, setLoading] = useState(false);
+
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
+    disabled: loading,
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  async function handleSendEmail(
+    values: z.infer<typeof contactFormSchema>,
+  ): Promise<void> {
+    setLoading(true);
+
+    try {
+      const { ok } = await sendEmail(values);
+
+      if (ok) {
+        toast.success("Your message was sent successfully!");
+        form.reset();
+      } else {
+        toast.error("Failed to send the message. Please try again.");
+      }
+    } catch (e) {
+      setLoading(false);
+      const error = e as Error;
+      toast.error(`An error occurred: ${error.message}`);
+    }
+
+    setLoading(false);
+  }
+
+  return (
+    <Form {...form}>
+      <Button
+        type="button"
+        onClick={() => toast("hello there")}
+        variant="outline"
+      >
+        test toast
+      </Button>
+      <form onSubmit={form.handleSubmit(handleSendEmail)} className="space-y-8">
+        {/* Name field */}
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input placeholder="John Doe" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Email field */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="johndoe@example.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Message field */}
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea placeholder="Your message here..." {...field} />
+              </FormControl>
+              <FormDescription>
+                Please write at least 10 characters.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button type="submit" disabled={loading}>
+          {loading ? "Sending..." : "Send"}
+        </Button>
+      </form>
+    </Form>
+  );
+}

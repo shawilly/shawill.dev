@@ -1,4 +1,4 @@
-import { Skull } from "lucide-react";
+import { MoonIcon, Skull, SunIcon } from "lucide-react";
 import Link from "next/link";
 
 import { Menu } from "@/components/sidebar/menu/menu";
@@ -7,19 +7,28 @@ import { Button } from "@/components/ui/button";
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { useStore } from "@/hooks/use-store";
 import { cn } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@radix-ui/react-tooltip";
+import { useTheme } from "next-themes";
 import localFont from "next/font/local";
+import { DarkModeToggle } from "../mode-toggle";
 
 const picnic = localFont({ src: "../../fonts/PicNic-Regular.woff2" });
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);
+  const { setTheme, theme } = useTheme();
 
   if (!sidebar) return null;
 
   return (
     <aside
       className={cn(
-        "fixed top-0 left-0 z-20 h-screen -translate-x-full lg:translate-x-0 transition-[width] ease-in-out duration-300",
+        "fixed top-0 left-0 z-20 h-screen -translate-x-1 lg:translate-x-0 transition-[width] ease-in-out duration-300",
         sidebar?.isOpen === false ? "w-[90px]" : "w-72",
       )}
     >

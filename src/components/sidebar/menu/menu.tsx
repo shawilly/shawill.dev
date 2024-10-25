@@ -15,6 +15,7 @@ import {
 import { getMenuList } from "@/lib/menu-list";
 import { cn } from "@/lib/utils";
 import type { Group, Menu } from "@/types";
+import { DarkModeToggle } from "@/components/mode-toggle";
 
 interface MenuProps {
   isOpen?: boolean;
