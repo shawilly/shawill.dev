@@ -54,6 +54,12 @@ export function Menu({ isOpen }: MenuProps): JSX.Element {
                     { href, label, icon: Icon, active, submenus, target }: Menu,
                     menuIndex: number,
                   ): JSX.Element => {
+                    if (!submenus?.length && !href) {
+                      throw new Error(
+                        "Menu item must have submenus or href: " + label,
+                      );
+                    }
+
                     return (
                       <div className="w-full" key={menuIndex}>
                         {!submenus?.length ?
@@ -65,8 +71,9 @@ export function Menu({ isOpen }: MenuProps): JSX.Element {
                               !isOpen ? { label, side: "right" } : undefined
                             }
                           >
+                            {/** We already validated for href above */}
                             <Link
-                              href={href}
+                              href={href!}
                               target={target === "_blank" ? target : undefined}
                               rel={
                                 target === "_blank" ?

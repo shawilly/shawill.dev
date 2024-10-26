@@ -2,12 +2,6 @@
 import { Sidebar } from "@/components/sidebar/sidebar";
 import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { cn } from "@/lib/utils";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { ToastContainer } from "react-toastify";
@@ -15,14 +9,18 @@ import "react-toastify/dist/ReactToastify.css";
 import { useStore } from "zustand";
 import { Button } from "./ui/button";
 
-export function BasePage({ children }: { children: React.ReactNode }) {
+export function BasePage({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}): JSX.Element {
   const { setTheme, theme } = useTheme();
   const sidebar = useStore(useSidebarToggle, (state) => state);
 
-  if (!sidebar) return null;
-
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center max-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <>
       <Sidebar />
       <ToastContainer />
       <div className="absolute top-4 right-4 lg:max-h-[6rem] lg:flex-1 lg:justify-end lg:items-center">
@@ -40,12 +38,14 @@ export function BasePage({ children }: { children: React.ReactNode }) {
       </div>
       <main
         className={cn(
-          "flex flex-col gap-8 row-start-2 items-center sm:items-start transition-[margin-left] ease-in-out duration-300",
+          className ||
+            "flex flex-col gap-8 row-start-2 items-center sm:items-start",
+          "transition-[margin-left] ease-in-out duration-300",
           sidebar?.isOpen === false ? "lg:ml-[90px]" : "lg:ml-72",
         )}
       >
         {children}
       </main>
-    </div>
+    </>
   );
 }

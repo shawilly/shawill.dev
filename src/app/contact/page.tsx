@@ -1,8 +1,8 @@
 import { BasePage } from "@/components/base-page";
 import { ContactForm } from "@/components/contact-form";
-import { Computer } from "@/components/computer";
+import { Computer } from "@/components/three/computer";
 import { HeroLinks } from "@/components/hero-links";
-import { StarsCanvas } from "@/components/stars";
+import { StarsCanvas } from "@/components/three/stars";
 
 export default async function Contact(): Promise<JSX.Element> {
   return (
@@ -21,8 +21,8 @@ export default async function Contact(): Promise<JSX.Element> {
           </p>
           <HeroLinks />
         </div>
-        <div className="items-center justify-center w-full h-full border-2 border-ponokai-green border-double rounded-xl">
-          <div className="relative rounded-xl w-auto h-full overflow-hidden z-0">
+        <div className="flex-grow border-2 border-ponokai-green border-double rounded-xl">
+          <div className="relative rounded-xl grow h-full overflow-hidden z-0">
             <Computer />
             <StarsCanvas />
           </div>
