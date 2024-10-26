@@ -16,8 +16,12 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "shawilly",
-  description: "Experienced Software Engineer",
+  title: {
+    template: "%s | Shawilly",
+    default: "Shawilly",
+  },
+  description: "Experience Software Engineer",
+  metadataBase: new URL("https://shawilly.dev/"),
 };
 
 export default function RootLayout({

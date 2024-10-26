@@ -7,12 +7,19 @@ import {
   MessageCircle,
   University,
 } from "lucide-react";
+import { socials } from "./constants/socials";
 
 export function getMenuList(pathname: string): Group[] {
   return [
     {
       groupLabel: "Experience",
       menus: [
+        {
+          href: "/work-experience",
+          label: "Work",
+          active: pathname.includes("/work-experience"),
+          icon: BriefcaseBusiness,
+        },
         {
           href: "",
           label: "Projects",
@@ -29,12 +36,6 @@ export function getMenuList(pathname: string): Group[] {
               label: "Chantoola",
             },
           ],
-        },
-        {
-          href: "/work-experience",
-          label: "Work",
-          active: pathname.includes("/work-experience"),
-          icon: BriefcaseBusiness,
         },
         {
           href: "/Education",
@@ -54,10 +55,11 @@ export function getMenuList(pathname: string): Group[] {
           icon: MessageCircle,
         },
         {
-          href: "/social",
+          href: undefined,
           label: "Socials",
-          active: pathname.includes("/social"),
+          active: false,
           icon: Link,
+          submenus: socials,
         },
       ],
     },

@@ -7,8 +7,8 @@ import { StarsCanvas } from "@/components/stars";
 export default async function Contact(): Promise<JSX.Element> {
   return (
     <BasePage>
-      <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-20 h-auto bg-black-100 p-8 rounded-2xl">
-        <div className="flex flex-col space-y-6">
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-20 h-auto w-auto p-8 rounded-2xl">
+        <div className="flex flex-col">
           <p className="text-[14px] sm:text-[18px] text-slate-500 uppercase tracking-wider">
             Let&apos;s talk
           </p>
@@ -21,8 +21,8 @@ export default async function Contact(): Promise<JSX.Element> {
           </p>
           <HeroLinks />
         </div>
-        <div className="items-center justify-center border-2 border-ponokai-green border-double rounded-xl">
-          <div className="relative rounded-xl w-full h-full overflow-hidden z-0">
+        <div className="items-center justify-center w-full h-full border-2 border-ponokai-green border-double rounded-xl">
+          <div className="relative rounded-xl w-auto h-full overflow-hidden z-0">
             <Computer />
             <StarsCanvas />
           </div>

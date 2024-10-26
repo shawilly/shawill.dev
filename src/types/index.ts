@@ -8,7 +8,7 @@ export interface Submenu {
 }
 
 export interface Menu {
-  href: string;
+  href?: string;
   label: string;
   icon: LucideIcon;
   active: boolean;
