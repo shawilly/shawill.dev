@@ -1,13 +1,13 @@
 import type { Group } from "@/types";
 import {
   BriefcaseBusiness,
-  DownloadCloud,
-  FolderGit,
+  FileDown,
+  HeartHandshake,
   Link,
   MessageCircle,
   University,
 } from "lucide-react";
-import { socials } from "./constants/socials";
+import { socials } from "../constants/socials";
 
 export function getMenuList(pathname: string): Group[] {
   return [
@@ -15,32 +15,35 @@ export function getMenuList(pathname: string): Group[] {
       groupLabel: "Experience",
       menus: [
         {
-          href: "/work-experience",
+          href: "/experience",
           label: "Work",
           active: pathname.includes("/work-experience"),
           icon: BriefcaseBusiness,
         },
         {
-          href: "",
-          label: "Projects",
-          active: pathname.includes("/projects"),
-          icon: FolderGit,
+          href: "/experience",
+          label: "Community",
+          active: pathname.includes("#projects"),
+          icon: HeartHandshake,
           submenus: [
             {
-              href: "https://ponokai.vercel.app",
+              href: "/experience/ponokai",
               label: "Ponokai",
-              target: "_blank",
             },
             {
-              href: "/chantoola",
+              href: "/experience/chantoola",
               label: "Chantoola",
+            },
+            {
+              href: "/experience/richmond-hair-studio",
+              label: "Richmond Hair Studio",
             },
           ],
         },
         {
-          href: "/Education",
-          label: "Education",
-          active: pathname.includes("/education"),
+          href: "/experience#school",
+          label: "School",
+          active: pathname.includes("school"),
           icon: University,
         },
       ],
@@ -64,13 +67,13 @@ export function getMenuList(pathname: string): Group[] {
       ],
     },
     {
-      groupLabel: "",
+      groupLabel: "TL;DR",
       menus: [
         {
           href: "https://docs.google.com/document/d/1XebXiapH1V6ZWhDmdIXZVVqzKLLwhEVR/export?format=pdf",
           label: "Download resume",
           active: false,
-          icon: DownloadCloud,
+          icon: FileDown,
           submenus: [],
         },
       ],

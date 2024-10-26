@@ -9,7 +9,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { getMenuList } from "@/lib/menu-list";
+import { getMenuList } from "@/lib/sidebar/menu-list";
 import { cn } from "@/lib/utils";
 import type { Group, Menu } from "@/types";
 import { Ellipsis } from "lucide-react";

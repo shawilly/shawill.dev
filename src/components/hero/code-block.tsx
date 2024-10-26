@@ -1,5 +1,5 @@
 "use client";
-import { getCodeBlockHtml } from "@/lib/get-code-block-html";
+import { getCodeBlockHtml } from "@/lib/hero/get-code-block-html";
 import { Loader } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";

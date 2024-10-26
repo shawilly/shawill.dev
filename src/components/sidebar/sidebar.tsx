@@ -42,10 +42,9 @@ export function Sidebar(): JSX.Element {
                 sidebar?.isOpen === false ?
                   "-translate-x-96 opacity-0 hidden"
                 : "translate-x-0 opacity-100",
-                picnic.className,
               )}
             >
-              shawilly
+              <span className={picnic.className}>shawilly</span>.dev
             </h1>
           </Link>
         </Button>

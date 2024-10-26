@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useStore } from "zustand";
 import { Button } from "./ui/button";
+import Footer from "./footer";
 
 export function BasePage({
   children,
@@ -45,6 +46,7 @@ export function BasePage({
         )}
       >
         {children}
+        <Footer />
       </main>
     </>
   );

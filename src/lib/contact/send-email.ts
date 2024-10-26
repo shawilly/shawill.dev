@@ -3,7 +3,7 @@
 import { contactFormSchema } from "@/components/contact-form";
 import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
 import { z } from "zod";
-import { processEnv } from "./env";
+import { processEnv } from "../env";
 
 export async function sendEmail({
   name,
