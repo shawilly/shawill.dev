@@ -1,6 +1,6 @@
 "use server";
 
-import { contactFormSchema } from "@/components/contact-form";
+import { contactFormSchema } from "@/components/contact/contact-form";
 import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
 import { z } from "zod";
 import { processEnv } from "../env";

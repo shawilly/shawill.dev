@@ -3,6 +3,7 @@ import {
   BriefcaseBusiness,
   FileDown,
   HeartHandshake,
+  Home,
   Link,
   MessageCircle,
   University,
@@ -10,38 +11,46 @@ import {
 import { socials } from "../constants/socials";
 
 export function getMenuList(pathname: string): Group[] {
-  return [
+  const groups: Group[] = [
     {
       groupLabel: "Experience",
       menus: [
         {
           href: "/experience",
           label: "Work",
-          active: pathname.includes("/work-experience"),
+          active: pathname.endsWith("/experience"),
           icon: BriefcaseBusiness,
         },
         {
-          href: "/experience",
+          href: "/experience/community",
           label: "Community",
-          active: pathname.includes("#projects"),
+          active: false,
           icon: HeartHandshake,
           submenus: [
             {
-              href: "/experience/ponokai",
-              label: "Ponokai",
+              href: "/experience/community",
+              label: "Work with me",
             },
             {
-              href: "/experience/chantoola",
+              href: "/experience/community/chantoola",
               label: "Chantoola",
             },
             {
-              href: "/experience/richmond-hair-studio",
+              href: "/experience/community/first-chance-shirts",
+              label: "First Chance Shirts",
+            },
+            {
+              href: "/experience/community/ponokai",
+              label: "Ponokai",
+            },
+            {
+              href: "/experience/community/richmond-hair-studio",
               label: "Richmond Hair Studio",
             },
           ],
         },
         {
-          href: "/experience#school",
+          href: "/experience/school",
           label: "School",
           active: pathname.includes("school"),
           icon: University,
@@ -74,9 +83,23 @@ export function getMenuList(pathname: string): Group[] {
           label: "Download resume",
           active: false,
           icon: FileDown,
-          submenus: [],
         },
       ],
     },
+  ];
+
+  const homeButton = {
+    href: "/",
+    label: "Home",
+    active: false,
+    icon: Home,
+  };
+
+  return [
+    {
+      groupLabel: "",
+      menus: [homeButton],
+    },
+    ...groups,
   ];
 }

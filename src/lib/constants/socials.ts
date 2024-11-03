@@ -1,4 +1,10 @@
-export const socials: { href: string; label: string; target: string }[] = [
+interface Social {
+  href: string;
+  label: string;
+  target: string;
+}
+
+export const socials: Social[] = [
   {
     href: "https://www.linkedin.com/in/shanebarrywilliams/",
     label: "LinkedIn",
@@ -19,4 +25,4 @@ export const socials: { href: string; label: string; target: string }[] = [
     label: "Instagram",
     target: "_blank",
   },
-];
+] as const;

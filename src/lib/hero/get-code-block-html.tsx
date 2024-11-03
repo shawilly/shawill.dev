@@ -6,8 +6,10 @@ export async function getCodeBlockHtml(): Promise<{
   darkCodeBlockHtml: string;
   lightCodeBlockHtml: string;
 }> {
-  const myTheme = JSON.parse(fs.readFileSync("./src/lib/ponokai.json", "utf8"));
-  const code = fs.readFileSync("./src/lib/about-code.ts", "utf8");
+  const myTheme = JSON.parse(
+    fs.readFileSync("./src/lib/hero/ponokai.json", "utf8"),
+  );
+  const code = fs.readFileSync("./src/lib/hero/about-code.ts", "utf8");
 
   const highlighter = await createHighlighter({
     themes: [myTheme],

@@ -1,7 +1,7 @@
+import { ThemeProvider } from "@/providers/theme-provider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "@/providers/theme-provider";
 
 const jetBrainsMono = localFont({
   src: "../fonts/JetBrainsMono-Regular.woff2",
@@ -10,8 +10,8 @@ const jetBrainsMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Shawilly",
-    default: "Shawilly",
+    template: "%s | shawilly",
+    default: "shawilly",
   },
   description: "Experience Software Engineer",
   metadataBase: new URL("https://shawilly.dev/"),

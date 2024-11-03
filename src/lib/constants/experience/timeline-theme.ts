@@ -1,0 +1,48 @@
+import { ponokai } from "ponokai";
+
+// Define color schemes for light and dark themes
+export const darkTheme = {
+  cardBgColor: ponokai.dark1,
+  cardDetailsBackGround: ponokai.background,
+  cardDetailsColor: ponokai.text,
+  cardMediaBgColor: ponokai.dark2,
+  cardSubtitleColor: ponokai.dimmed2,
+  cardTitleColor: ponokai.purple,
+  detailsColor: ponokai.text,
+  iconBackgroundColor: ponokai.blue,
+  nestedCardBgColor: ponokai.dark1,
+  nestedCardDetailsBackGround: ponokai.background,
+  nestedCardDetailsColor: ponokai.text,
+  nestedCardSubtitleColor: ponokai.dimmed2,
+  nestedCardTitleColor: ponokai.purple,
+  primary: ponokai.background,
+  secondary: ponokai.dimmed3,
+  titleColor: ponokai.blue,
+  titleColorActive: ponokai.purple,
+  toolbarBgColor: ponokai.dark1,
+  toolbarBtnBgColor: ponokai.dimmed3,
+  toolbarTextColor: ponokai.text,
+};
+
+export const lightTheme = {
+  cardBgColor: ponokai.text,
+  cardDetailsBackGround: ponokai.text,
+  cardDetailsColor: ponokai.background,
+  cardMediaBgColor: ponokai.yellow,
+  cardSubtitleColor: ponokai.dimmed4,
+  cardTitleColor: ponokai.dimmed2,
+  detailsColor: ponokai.background,
+  iconBackgroundColor: ponokai.green,
+  nestedCardBgColor: ponokai.text,
+  nestedCardDetailsBackGround: ponokai.text,
+  nestedCardDetailsColor: ponokai.background,
+  nestedCardSubtitleColor: ponokai.dimmed4,
+  nestedCardTitleColor: ponokai.dimmed2,
+  primary: ponokai.green,
+  secondary: ponokai.orange,
+  titleColor: ponokai.dimmed5,
+  titleColorActive: ponokai.dimmed3,
+  toolbarBgColor: ponokai.text,
+  toolbarBtnBgColor: ponokai.purple,
+  toolbarTextColor: ponokai.background,
+};

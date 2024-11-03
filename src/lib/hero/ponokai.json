@@ -1,6 +1,6 @@
 {
   "colors": {
-    "activityBar.background": "##2b2d3a",
+    "activityBar.background": "#232634",
     "activityBar.foreground": "#f8f8f2",
     "badge.background": "#c4c6cf",
     "badge.foreground": "#f8f8f2",
@@ -10,7 +10,7 @@
     "diffEditor.removedTextBackground": "#90274A70",
     "dropdown.background": "#414339",
     "dropdown.listBackground": "#1e1f1c",
-    "editor.background": "##2b2d3a",
+    "editor.background": "#232634",
     "editor.foreground": "#f8f8f2",
     "editor.lineHighlightBackground": "#3e3d32",
     "editor.selectionBackground": "#878b9180",

@@ -1,13 +1,14 @@
-import { Skull } from "lucide-react";
-import Link from "next/link";
+"use client";
 
 import { Menu } from "@/components/sidebar/menu/menu";
 import { SidebarToggle } from "@/components/sidebar/sidebar-toggle";
 import { Button } from "@/components/ui/button";
-import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
+import { useSidebarToggle } from "@/hooks/sidebar/use-sidebar-toggle";
 import { useStore } from "@/hooks/use-store";
 import { cn } from "@/lib/utils";
+import { Skull } from "lucide-react";
 import localFont from "next/font/local";
+import Link from "next/link";
 
 const picnic = localFont({ src: "../../fonts/PicNic-Regular.woff2" });
 
@@ -17,7 +18,7 @@ export function Sidebar(): JSX.Element {
   return (
     <aside
       className={cn(
-        "fixed top-0 left-0 z-20 h-screen -translate-x-1 lg:translate-x-0 transition-[width] ease-in-out duration-300",
+        "fixed bg-background top-0 left-0 z-20 h-screen -translate-x-1 lg:translate-x-0 transition-[width] ease-in-out duration-300",
         sidebar?.isOpen === false ? "w-[90px]" : "w-72",
       )}
     >
@@ -25,7 +26,7 @@ export function Sidebar(): JSX.Element {
       <div className="relative h-full flex flex-col px-3 py-4 overflow-y-auto shadow-md dark:shadow-zinc-800">
         <Button
           className={cn(
-            "transition-transform ease-in-out duration-300 mb-1",
+            "transition-transform text-ponokai-background dark:text-ponokai-text ease-in-out duration-300 mb-1",
             sidebar?.isOpen === false ? "translate-x-1" : "translate-x-0",
           )}
           tooltip={

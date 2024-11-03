@@ -1,13 +1,14 @@
 "use client";
 
-import { PointMaterial, Points, Preload } from "@react-three/drei";
-import * as THREE from "three";
+import * as React from "react";
+import { Preload, Points, PointMaterial } from "@react-three/drei";
+import { type Points as ThreePoints } from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
-import * as random from "maath/random/dist/maath-random.cjs";
+import random from "maath/random/dist/maath-random.cjs";
 import { useRef, useState } from "react";
 
-const Stars = (): JSX.Element => {
-  const ref = useRef<THREE.Points>(null!);
+const Stars = () => {
+  const ref = useRef<ThreePoints>(null!);
 
   useFrame((_state, delta) => {
     ref.current.rotation.x -= delta / 10;
@@ -34,7 +35,7 @@ const Stars = (): JSX.Element => {
   );
 };
 
-export function StarsCanvas(): JSX.Element {
+export function StarsCanvas() {
   return (
     <div className="w-full bg-ponokai-background h-auto absolute inset-0 z-[-1]">
       <Canvas camera={{ position: [0, 0, 1] }}>
